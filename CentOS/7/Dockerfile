@@ -50,6 +50,10 @@ ADD axelget.py /usr/lib/yum-plugins/
 RUN cd /home/work/_src \
     && rpm -ivh axel-2.4-1.el6.rf.x86_64.rpm
 
+
+
+RUN rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+
 # -----------------------------------------------------------------------------
 # 更改源为阿里云
 # -----------------------------------------------------------------------------
