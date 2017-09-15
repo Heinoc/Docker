@@ -4,8 +4,24 @@ MAINTAINER heinoc <tracychsh@126.com>
 
 
 
+# -----------------------------------------------------------------------------
+# Ensure UTF-8
+# -----------------------------------------------------------------------------
+ENV \
+	LC_ALL=en_US.UTF-8 \
+	LANG=en_US.UTF-8 \
+	LANGUAGE=en_US.UTF-8
 
-#RUN echo "Asia/Shanghai" > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata
+
+# -----------------------------------------------------------------------------
+# 设置时区
+# -----------------------------------------------------------------------------
+RUN apt-fast install -y tzdata \
+	&& ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+	&& echo "Asia/Shanghai" > /etc/timezone \
+	&& dpkg-reconfigure -f noninteractive tzdata
+
+
 
 # -----------------------------------------------------------------------------
 # 创建work用户
