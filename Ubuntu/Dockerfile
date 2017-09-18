@@ -31,7 +31,7 @@ RUN useradd -r -m work \
     && echo "root:123456" | chpasswd 
 
 RUN cd /home/work \
-    && mkdir _src
+    && mkdir src
 
 # -----------------------------------------------------------------------------
 # 设置work目录的用户和用户组

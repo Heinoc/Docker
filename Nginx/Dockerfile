@@ -1,9 +1,10 @@
 FROM heinoc/centos:7
+
 MAINTAINER heinoc <tracychsh@126.com>
 
 
 
-#RUN yum install gcc-c++
+RUN yum install gcc-c++
 RUN yum -y install pcre pcre-devel
 RUN yum -y install zlib zlib-devel
 RUN yum install -y openssl openssl-devel
@@ -11,79 +12,57 @@ RUN yum install -y openssl openssl-devel
 
 
 
-RUN wget -c -P /home/work/_src/ https://nginx.org/download/nginx-1.10.3.tar.gz
-
-
-RUN pwd
-RUN cd _src \
-    && tar -zxvf nginx-1.10.3.tar.gz \
-    && cd /home/work/_src/nginx-1.10.3 \
-    && ./configure \
-    && make \
-    && make install \
-# -----------------------------------------------------------------------------
-# 删除多余文件
-# -----------------------------------------------------------------------------
-    && yum clean all \
-    && rm -rf /home/work/_src/*
-
-
-
-#ADD tengine-2.2.0.zip /home/work/_src
-#ADD pcre-8.35.tar.gz /home/work/_src
-#ADD zlib-1.2.8.tar.gz /home/work/_src
-#ADD openssl-1.0.1g.tar.gz /home/work/_src
-#
-##RUN rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
-##RUN yum -y install gcc
-#
-## -----------------------------------------------------------------------------
-## 安装tengine2.2.0基于nginx1.8
-## -----------------------------------------------------------------------------
-#RUN mkdir -p /home/work/_script /home/work/_app/nginx \
+#RUN wget -c -P /home/work/src/ https://nginx.org/download/nginx-1.10.3.tar.gz
 #
 #
-#
-## -----------------------------------------------------------------------------
-##   安装pcre8.35
-## -----------------------------------------------------------------------------
-#    && cd /home/work/_src/pcre-8.35 \
-#    && ./configure --enable-utf8 \
+#RUN pwd
+#RUN cd src \
+#    && tar -zxvf nginx-1.10.3.tar.gz \
+#    && cd /home/work/src/nginx-1.10.3 \
+#    && ./configure \
 #    && make \
 #    && make install \
-#    \
-#
-#
-#
-## -----------------------------------------------------------------------------
-##   安装tengine
-## -----------------------------------------------------------------------------
-#    && cd /home/work/_src/ \
-#    && unzip tengine-2.2.0.zip \
-#    && cd tengine-tengine-2.2.0 \
-#    && ./configure --prefix=/home/work/_app/nginx --with-pcre=/home/work/_src/pcre-8.35 --with-zlib=/home/work/_src/zlib-1.2.8 --with-openssl=/home/work/_src/openssl-1.0.1g --with-http_gzip_static_module --with-http_realip_module --with-http_stub_status_module --with-http_concat_module --with-http_ssl_module \
-#    && make \
-#    && make install \
-#    \
-## -----------------------------------------------------------------------------
-##   设置环境变量
-## -----------------------------------------------------------------------------
-##    && echo "export PATH=\$PATH:/home/work/_app/nginx/sbin" >> /etc/profile \
-##    && echo "export PATH=\$PATH:/home/work/_app/nginx/sbin" >> ~/.bashrc \
-##    && sed -i "s/#user  nobody;/user  work;/" /home/work/_app/nginx/conf/nginx.conf \
-##    \
 ## -----------------------------------------------------------------------------
 ## 删除多余文件
 ## -----------------------------------------------------------------------------
 #    && yum clean all \
-#    && rm -rf /home/work/_src/*
+#    && rm -rf /home/work/src/*
+
+
+
+ADD tengine-2.2.0.zip /home/work/src
+
+
+# -----------------------------------------------------------------------------
+#   安装tengine
+# -----------------------------------------------------------------------------
+RUN cd /home/work/src/ \
+    && unzip tengine-2.2.0.zip \
+    && cd tengine-tengine-2.2.0 \
+    && ./configure --prefix=/home/work/app/nginx \
+    && make \
+    && make install \
+    \
+# -----------------------------------------------------------------------------
+#   设置环境变量
+# -----------------------------------------------------------------------------
+    && echo "export PATH=\$PATH:/home/work/_app/nginx/sbin" >> /etc/profile \
+    && echo "export PATH=\$PATH:/home/work/_app/nginx/sbin" >> ~/.bashrc \
+    && sed -i "s/#user  nobody;/user  work;/" /home/work/app/nginx/conf/nginx.conf \
+    \
+# -----------------------------------------------------------------------------
+# 删除多余文件
+# -----------------------------------------------------------------------------
+    && yum clean all \
+    && rm -rf /home/work/src/*
+
 
 
 # -----------------------------------------------------------------------------
 # 修改 Nginx 的配置文件，并配置默认站点
 # -----------------------------------------------------------------------------
-ADD _app/nginx/conf/nginx.conf /home/work/_app/nginx/conf/nginx.conf
-ADD _app/nginx/conf/conf.d/default.conf /home/work/_app/nginx/conf/conf.d/default.conf
+ADD app/nginx/conf/nginx.conf /home/work/app/nginx/conf/nginx.conf
+ADD app/nginx/conf/conf.d/default.conf /home/work/app/nginx/conf/conf.d/default.conf
 
 # -----------------------------------------------------------------------------
 # 映射端口
@@ -95,4 +74,5 @@ EXPOSE 80
 # -----------------------------------------------------------------------------
 ADD run.sh /
 RUN chmod +x /run.sh
+ENTRYPOINT /usr/sbin/init
 CMD ["/run.sh"]

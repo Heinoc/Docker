@@ -31,7 +31,7 @@ RUN useradd -r -m work \
     && echo "root:123456" | chpasswd
 
 RUN cd /home/work \
-    && mkdir _src
+    && mkdir src
 
 # -----------------------------------------------------------------------------
 # 设置work目录的用户和用户组
@@ -44,10 +44,10 @@ RUN chown -R work:work /home/work/*
 # -----------------------------------------------------------------------------
 # 安装 axel 多线程下载工具
 # -----------------------------------------------------------------------------
-ADD axel-2.4-1.el6.rf.x86_64.rpm /home/work/_src/
+ADD axel-2.4-1.el6.rf.x86_64.rpm /home/work/src/
 ADD axelget.conf /etc/yum/pluginconf.d/
 ADD axelget.py /usr/lib/yum-plugins/
-RUN cd /home/work/_src \
+RUN cd /home/work/src \
     && rpm -ivh axel-2.4-1.el6.rf.x86_64.rpm
 
 
