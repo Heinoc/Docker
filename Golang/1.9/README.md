@@ -1,5 +1,5 @@
 
-# golang1.9-docker
+# golang1.9-nginx1.8.1-centos7
 
 
 This repository contains the sources for the following [docker](https://docker.io) base images:
