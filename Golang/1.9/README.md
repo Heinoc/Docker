@@ -3,7 +3,7 @@
 
 
 This repository contains the sources for the following [docker](https://docker.io) base images:
-- [`heinoc/nginx:1.8.1`](https://hub.docker.com/r/heinoc/nginx:1.8.1/)
+- [`heinoc/nginx:1.8.1`](https://hub.docker.com/r/heinoc/nginx/)
 
 
 ## Developing
