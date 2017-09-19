@@ -5,7 +5,6 @@ MAINTAINER heinoc <tracychsh@126.com>
 
 
 RUN set -eux \
-    && mkdir /home/work/temp \
 	&& cd /home/work/temp \
 # -----------------------------------------------------------------------------
 # 下载golang安装包
@@ -13,10 +12,14 @@ RUN set -eux \
 	&& wget -O go1.9.tar.gz "https://storage.googleapis.com/golang/go1.9.linux-amd64.tar.gz" \
 	&& tar -C /home/work/app -xzf go1.9.tar.gz \
 # -----------------------------------------------------------------------------
-# 创建GOPATH
+# 创建GOPATH目录
 # -----------------------------------------------------------------------------
 	&& cd /home/work/src \
-	&& mkdir golang\
+	&& mkdir golang \
+	&& cd golang \
+	&& mkdir bin \
+	&& mkdir pkg \
+	&& mkdir src \
 # -----------------------------------------------------------------------------
 # 配置golang环境变量
 # -----------------------------------------------------------------------------
