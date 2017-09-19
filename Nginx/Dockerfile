@@ -42,12 +42,11 @@ RUN cd /home/work/src/ \
     && ./configure --prefix=/home/work/app/nginx \
     && make \
     && make install \
-    \
 # -----------------------------------------------------------------------------
 #   设置环境变量
 # -----------------------------------------------------------------------------
-    && echo "export PATH=\$PATH:/home/work/_app/nginx/sbin" >> /etc/profile \
-    && echo "export PATH=\$PATH:/home/work/_app/nginx/sbin" >> ~/.bashrc \
+    && echo "export PATH=\$PATH:/home/work/app/nginx/sbin" >> /etc/profile \
+    && echo "export PATH=\$PATH:/home/work/app/nginx/sbin" >> ~/.bash_profile \
     && sed -i "s/#user  nobody;/user  work;/" /home/work/app/nginx/conf/nginx.conf \
     \
 # -----------------------------------------------------------------------------
