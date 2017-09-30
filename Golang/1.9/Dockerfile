@@ -21,13 +21,14 @@ RUN set -eux \
 	&& mkdir pkg \
 	&& mkdir src \
 # -----------------------------------------------------------------------------
-# 配置golang环境变量
-# -----------------------------------------------------------------------------
-    && echo "export PATH=\$PATH:/home/work/app/go/bin" >> /etc/profile \
-    && echo "export PATH=\$PATH:/home/work/app/go/bin" >> ~/.bash_profile \
-    && echo "export GOPATH=/home/work/src/golang" >> ~/.bash_profile \
-    && echo "export GOBIN=/home/work/app/go" >> ~/.bash_profile \
-# -----------------------------------------------------------------------------
 # 删除golang安装包
 # -----------------------------------------------------------------------------
 	&& rm -rf /home/work/temp/go.tgz
+
+
+# -----------------------------------------------------------------------------
+# 配置golang环境变量
+# -----------------------------------------------------------------------------
+ENV PATH    $PATH:/home/work/app/go/bin
+ENV GOPATH  /home/work/src/golang
+ENV GOBIN   /home/work/app/go

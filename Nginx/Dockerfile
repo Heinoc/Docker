@@ -1,4 +1,4 @@
-FROM heinoc/centos:7
+FROM heinoc/centos:7.4
 
 MAINTAINER heinoc <tracychsh@126.com>
 

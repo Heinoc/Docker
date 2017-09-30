@@ -52,7 +52,8 @@ ADD axel-2.4-1.el6.rf.x86_64.rpm /home/work/src/
 ADD axelget.conf /etc/yum/pluginconf.d/
 ADD axelget.py /usr/lib/yum-plugins/
 RUN cd /home/work/src \
-    && rpm -ivh axel-2.4-1.el6.rf.x86_64.rpm
+    && rpm -ivh axel-2.4-1.el6.rf.x86_64.rpm \
+    && rm -rf axel-2.4-1.el6.rf.x86_64.rpm
 
 
 
@@ -83,10 +84,7 @@ RUN yum install -y wget python-setuptools iputils bash-completion \
 
 
 
-# -----------------------------------------------------------------------------
-# Define working directory.
-# -----------------------------------------------------------------------------
-WORKDIR /home/work
+#WORKDIR /home/work
 
 
 
