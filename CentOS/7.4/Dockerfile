@@ -7,20 +7,22 @@ MAINTAINER heinoc <tracychsh@126.com>
 # -----------------------------------------------------------------------------
 # UTF-8
 # -----------------------------------------------------------------------------
-RUN timedatectl list-timezones
-RUN localectl list-locales |grep utf8
+#RUN timedatectl list-timezones
+#RUN localectl list-locales |grep utf8
 
-RUN localectl set-locale LANG=en_GB.utf8 \
-    localectl set-keymap en_GB
+#RUN localectl set-locale LANG=en_GB.utf8 \
+#    localectl set-keymap en_GB
 
+ENV LANG       en_US.UTF-8
 
 
 # -----------------------------------------------------------------------------
 # 设置时区
 # -----------------------------------------------------------------------------
-RUN timedatectl set-timezone Asia/Shanghai \
-    timedatectl set-time YYYY-MM-DD \
-    timedatectl set-time HH:MM:SS
+RUN \cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime -R -f
+#RUN timedatectl set-timezone Asia/Shanghai \
+#    timedatectl set-time YYYY-MM-DD \
+#    timedatectl set-time HH:MM:SS
 
 
 # -----------------------------------------------------------------------------
