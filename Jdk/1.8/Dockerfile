@@ -12,7 +12,7 @@ RUN set -eux \
 # -----------------------------------------------------------------------------
 # 下载jdk1.8安装包
 # -----------------------------------------------------------------------------
-    && wget -O jdk8.tar.gz "http://124.202.164.6/files/413000000A7FA5C8/download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jdk-8u144-linux-x64.tar.gz" \
+    && wget -O jdk8.tar.gz  --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jdk-8u144-linux-x64.tar.gz" \
     && tar xvf jdk8.tar.gz -C /home/work/app \
 
 # -----------------------------------------------------------------------------
