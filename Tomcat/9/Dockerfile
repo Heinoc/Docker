@@ -8,8 +8,8 @@ RUN set -eux \
 # -----------------------------------------------------------------------------
 # 下载安装包
 # -----------------------------------------------------------------------------
-	&& wget -O tomcat7.tar.gz "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-7/v7.0.82/bin/apache-tomcat-7.0.82.tar.gz" \
-	&& tar -C /home/work/app -xzf tomcat7.tar.gz \
+	&& wget -O tomcat9.tar.gz "http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.1/bin/apache-tomcat-9.0.1.tar.gz" \
+	&& tar -C /home/work/app -xzf tomcat9.tar.gz \
 # -----------------------------------------------------------------------------
 # 删除安装包
 # -----------------------------------------------------------------------------
@@ -19,16 +19,18 @@ RUN set -eux \
 # -----------------------------------------------------------------------------
 # 修改 tomcat-users.xml 配置文件，启用admin用户
 # -----------------------------------------------------------------------------
-ADD conf/tomcat-users.xml /home/work/app/apache-tomcat-7.0.82/conf/tomcat-users.xml
+ADD conf/tomcat-users.xml /home/work/app/apache-tomcat-9.0.1/conf/tomcat-users.xml
+ADD META-INF/context.xml /home/work/app/apache-tomcat-9.0.1/webapps/manager/META-INF/context.xml
+ADD META-INF/context.xml /home/work/app/apache-tomcat-9.0.1/webapps/host-manager/META-INF/context.xml
 
 
 # -----------------------------------------------------------------------------
 # 配置tomcat环境变量
 # -----------------------------------------------------------------------------
-ENV CATALINA_HOME   /home/work/app/apache-tomcat-7.0.82
+ENV CATALINA_HOME   /home/work/app/apache-tomcat-9.0.1
 
 
 EXPOSE 8080
 
 
-CMD ["/home/work/app/apache-tomcat-7.0.82/bin/catalina.sh", "run"]
+CMD ["/home/work/app/apache-tomcat-9.0.1/bin/catalina.sh", "run"]
