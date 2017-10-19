@@ -12,13 +12,13 @@ RUN yum install -y openssl openssl-devel
 
 
 
-#RUN wget -c -P /home/work/src/ https://nginx.org/download/nginx-1.10.3.tar.gz
+#RUN wget -c -P /home/work/temp/ https://nginx.org/download/nginx-1.10.3.tar.gz
 #
 #
 #RUN pwd
 #RUN cd src \
 #    && tar -zxvf nginx-1.10.3.tar.gz \
-#    && cd /home/work/src/nginx-1.10.3 \
+#    && cd /home/work/temp/nginx-1.10.3 \
 #    && ./configure \
 #    && make \
 #    && make install \
@@ -26,17 +26,17 @@ RUN yum install -y openssl openssl-devel
 ## 删除多余文件
 ## -----------------------------------------------------------------------------
 #    && yum clean all \
-#    && rm -rf /home/work/src/*
+#    && rm -rf /home/work/temp/*
 
 
 
-ADD tengine-2.2.0.zip /home/work/src
+ADD tengine-2.2.0.zip /home/work/temp
 
 
 # -----------------------------------------------------------------------------
 #   安装tengine
 # -----------------------------------------------------------------------------
-RUN cd /home/work/src/ \
+RUN cd /home/work/temp/ \
     && unzip tengine-2.2.0.zip \
     && cd tengine-tengine-2.2.0 \
     && ./configure --prefix=/home/work/app/nginx \
@@ -53,7 +53,7 @@ RUN cd /home/work/src/ \
 # 删除多余文件
 # -----------------------------------------------------------------------------
     && yum clean all \
-    && rm -rf /home/work/src/*
+    && rm -rf /home/work/temp/*
 
 
 
