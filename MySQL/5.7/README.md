@@ -1,5 +1,5 @@
 
-# MySQL 8.0
+# MySQL 5.7
 
 
 
