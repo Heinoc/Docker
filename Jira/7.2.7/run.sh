@@ -7,4 +7,4 @@ service supervisord start
 service sshd start
 
 # outpu log
-tail -F /home/work/_logs/supervisord/supervisord.log
+tail -F /home/work/logs/supervisord/supervisord.log

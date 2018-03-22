@@ -5,6 +5,13 @@ MAINTAINER heinoc <tracychsh@126.com>
 
 
 # -----------------------------------------------------------------------------
+# 安装 expect 工具
+# -----------------------------------------------------------------------------
+RUN yum makecache \
+    && yum install -y tcl expect
+
+
+# -----------------------------------------------------------------------------
 # 下载jira
 # -----------------------------------------------------------------------------
 RUN axel -n 10 -o /home/work/temp/ https://downloads.atlassian.com/software/jira/downloads/atlassian-jira-software-7.2.7-x64.bin \
@@ -28,6 +35,8 @@ RUN chmod 777 /home/work/script/jira-init.sh
 # 加入破解文件
 # -----------------------------------------------------------------------------
 ADD files/jira7.2_hack.zip /home/work/temp
+
+
 
 
 # Define data volumes
