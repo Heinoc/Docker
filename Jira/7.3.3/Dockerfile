@@ -29,9 +29,9 @@ RUN axel -n 10 -o /home/work/temp/ https://downloads.atlassian.com/software/jira
 # 复制文件
 # -----------------------------------------------------------------------------
 #hack
-COPY files/atlassian-extras-3.2.jar /home/work/temp/jira-extras
+COPY files/atlassian-extras-3.2.jar /home/work/temp/jira-extras/atlassian-extras-3.2.jar
 #mysql driver
-COPY files/mysql-connector-java-5.1.39-bin.jar /home/work/temp/jira-extras
+COPY files/mysql-connector-java-5.1.39-bin.jar /home/work/temp/jira-extras/mysql-connector-java-5.1.39-bin.jar
 
 # -----------------------------------------------------------------------------
 # 复制安装命令
