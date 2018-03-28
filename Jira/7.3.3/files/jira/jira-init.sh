@@ -13,10 +13,12 @@ then
 # -----------------------------------------------------------------------------
     expect /home/work/script/jira-install.sh \
     && cd /home/work/temp \
-#    && \cp -f /home/work/temp/jira-extras/atlassian-extras-3.2.jar /opt/atlassian/jira/atlassian-jira/WEB-INF/lib \
-#    && \cp -f /home/work/temp/jira-extras/mysql-connector-java-5.1.39-bin.jar /opt/atlassian/jira/atlassian-jira/WEB-INF/lib \
-#    && service jira stop \
-#    && service jira start
+    && echo "copy atlassian-extras-3.2.jar to /opt/atlassian/jira/atlassian-jira/WEB-INF/lib/atlassian-extras-3.2.jar" \
+    && \cp -f /home/work/temp/jira-extras/atlassian-extras-3.2.jar /opt/atlassian/jira/atlassian-jira/WEB-INF/lib/atlassian-extras-3.2.jar \
+    && echo "copy mysql-connector-java-5.1.39-bin.jar to /opt/atlassian/jira/atlassian-jira/WEB-INF/lib/mysql-connector-java-5.1.39-bin.jar" \
+    && \cp -f /home/work/temp/jira-extras/mysql-connector-java-5.1.39-bin.jar /opt/atlassian/jira/atlassian-jira/WEB-INF/lib/mysql-connector-java-5.1.39-bin.jar \
+    && service jira stop \
+    && service jira start
 else
 # -----------------------------------------------------------------------------
 # 如果 JIRA 用户和用户组不存在则创建
