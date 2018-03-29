@@ -54,5 +54,8 @@ VOLUME ["/opt/atlassian", "/var/atlassian"]
 # -----------------------------------------------------------------------------
 EXPOSE 8080 8085 8443 8090
 
+
+ENTRYPOINT ["/usr/sbin/init"]
+
 CMD ["/home/work/script/jira-init.sh"]
 
