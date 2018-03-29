@@ -32,6 +32,8 @@ RUN axel -n 10 -o /home/work/temp/ https://downloads.atlassian.com/software/jira
 COPY files/atlassian-extras-3.2.jar /home/work/temp/jira-extras/atlassian-extras-3.2.jar
 #mysql driver
 COPY files/mysql-connector-java-5.1.39-bin.jar /home/work/temp/jira-extras/mysql-connector-java-5.1.39-bin.jar
+#mysql driver
+COPY files/language/* /home/work/temp/jira-extras/language/
 
 # -----------------------------------------------------------------------------
 # 复制安装命令
@@ -57,5 +59,5 @@ EXPOSE 8080 8085 8443 8090
 
 ENTRYPOINT ["/usr/sbin/init"]
 
-CMD ["/home/work/script/jira-init.sh"]
+#CMD ["/home/work/script/jira-init.sh"]
 
