@@ -17,7 +17,7 @@ then
     && \cp -f /home/work/temp/jira-extras/atlassian-extras-3.2.jar /opt/atlassian/jira/atlassian-jira/WEB-INF/lib/atlassian-extras-3.2.jar \
     && echo "copy mysql-connector-java-5.1.39-bin.jar to /opt/atlassian/jira/atlassian-jira/WEB-INF/lib/mysql-connector-java-5.1.39-bin.jar" \
     && \cp -f /home/work/temp/jira-extras/mysql-connector-java-5.1.39-bin.jar /opt/atlassian/jira/atlassian-jira/WEB-INF/lib/mysql-connector-java-5.1.39-bin.jar \
-    && echo "copy JIRA Core-7.2.1-language-pack-zh_CN.jar to /opt/atlassian/jira/atlassian-jira/WEB-INF/lib/JIRA Core-7.2.1-language-pack-zh_CN.jar" \
+    && echo "copy JIRA Core-7.3.3-language-pack-zh_CN.jar to /opt/atlassian/jira/atlassian-jira/WEB-INF/lib/JIRA Core-7.3.3-language-pack-zh_CN.jar" \
     && \cp -f /home/work/temp/jira-extras/language/* /opt/atlassian/jira/atlassian-jira/WEB-INF/lib/ \
     && service jira stop \
     && service jira start
