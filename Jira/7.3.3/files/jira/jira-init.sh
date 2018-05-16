@@ -18,9 +18,7 @@ then
     && echo "copy mysql-connector-java-5.1.39-bin.jar to /opt/atlassian/jira/atlassian-jira/WEB-INF/lib/mysql-connector-java-5.1.39-bin.jar" \
     && \cp -f /home/work/temp/jira-extras/mysql-connector-java-5.1.39-bin.jar /opt/atlassian/jira/atlassian-jira/WEB-INF/lib/mysql-connector-java-5.1.39-bin.jar \
     && echo "copy JIRA Core-7.3.3-language-pack-zh_CN.jar to /opt/atlassian/jira/atlassian-jira/WEB-INF/lib/JIRA Core-7.3.3-language-pack-zh_CN.jar" \
-    && \cp -f /home/work/temp/jira-extras/language/* /opt/atlassian/jira/atlassian-jira/WEB-INF/lib/ \
-    && service jira stop \
-    && service jira start
+    && \cp -f /home/work/temp/jira-extras/language/* /opt/atlassian/jira/atlassian-jira/WEB-INF/lib/
 else
 # -----------------------------------------------------------------------------
 # 如果 JIRA 用户和用户组不存在则创建
@@ -41,6 +39,6 @@ else
 # -----------------------------------------------------------------------------
 # 停止服务，并重新启动
 # -----------------------------------------------------------------------------
-    service jira stop
+#    service jira stop
     service jira start
 fi

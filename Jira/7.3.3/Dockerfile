@@ -55,9 +55,7 @@ VOLUME ["/opt/atlassian", "/var/atlassian"]
 # 执行安装命令
 # -----------------------------------------------------------------------------
 RUN cd /home/work/script/ \
-    && ./jira-init.sh \
-    && service stop jira \
-    && service start jira \
+    && ./jira-init.sh
 
 
 # -----------------------------------------------------------------------------
