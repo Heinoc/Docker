@@ -14,8 +14,8 @@ RUN yum makecache fast\
 # -----------------------------------------------------------------------------
 # 下载jira
 # -----------------------------------------------------------------------------
-RUN wget -o /home/work/temp/ https://downloads.atlassian.com/software/jira/downloads/atlassian-jira-software-7.3.3-x64.bin \
-    && cd /home/work/temp \
+RUN cd /home/work/temp \
+    && wget -O atlassian-jira-software-7.3.3-x64.bin https://downloads.atlassian.com/software/jira/downloads/atlassian-jira-software-7.3.3-x64.bin \
     && chmod 755 atlassian-jira-software-7.3.3-x64.bin \
     && mkdir /home/work/script/ \
 # -----------------------------------------------------------------------------
